@@ -1,6 +1,7 @@
 package com.example.banking_manage.service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IGeneralService <E,T>{
     List<E> findAll();

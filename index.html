@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard - Banking</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/assets/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style-custom.css">
+    <link rel="stylesheet" href="assets/sweetalert2/sweetalert2.min.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/jquery/jquery-3.7.1.min.js"></script>
+    <script src="/assets/jquery/jquery.validate.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Poppi</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="/assets/img/user.jpg" alt=""
+                            style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Piii</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="index.html" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa fa-laptop me-2"></i>Elements</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="button.html" class="dropdown-item">Buttons</a>
+                            <a href="typography.html" class="dropdown-item">Typography</a>
+                            <a href="element.html" class="dropdown-item">Other Elements</a>
+                        </div>
+                    </div>
+                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
+                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="far fa-file-alt me-2"></i>Pages</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="signin.html" class="dropdown-item">Sign In</a>
+                            <a href="signup.html" class="dropdown-item">Sign Up</a>
+                            <a href="404.html" class="dropdown-item">404 Error</a>
+                            <a href="blank.html" class="dropdown-item">Blank Page</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="/assets/img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="/assets/img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="/assets/img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="/assets/img/user.jpg" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">NTNPi</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- List of customer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-12">
+                    <div class="col-sm-12 ">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <h3>List of Customer</h3>
+                            <div class="d-flex" style="gap: 10px;">
+                                <button class="btn btn-outline-light" type="button">
+                                    <i class="fas fa-history"></i>
+                                    Transfer histories
+                                </button>
+                                <button type="button" class="btn btn-outline-light create" id="create">
+                                    <i class="far fa-plus-square"></i>
+                                    Add new customer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- List of customer End -->
+
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <table id="tbCustomer" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>FullName</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Balance</th>
+                                <th colspan="5">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Recent Sales End -->
+        </div>
+    </div>
+
+    <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div id="toast-body" class="toast-body">
+                </div>
+                <button type="button" id="btnCloseToast" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Modal Create -->
+    <div class="modal fade" id="mdCreate" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal create</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameCr" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameCr">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailCr" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailCr">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneCr" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phoneCr">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressCr" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="addressCr">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" id="btnCreate">
+                        <i class="fas fa-plus"></i>
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update -->
+    <div class="modal fade" id="mdUpdate" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal update</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameUp" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameUp">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailUp" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailUp">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneUp" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phoneUp">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressUp" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="addressUp">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-secondary" id="btnUpdate">
+                        <i class="fas fa-pencil"></i>
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Deposit -->
+    <div class="modal fade" id="mdDeposit" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal Deposit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameDepo" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameDepo" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailDepo" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailDepo" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneDepo" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phoneDepo" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressDepo" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="addressDepo" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="transactionAmountDepo">Amount Deposit</label>
+                                <input type="number" id="transactionAmountDepo" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="amountDepo">Balance</label>
+                                <input type="number" id="amountDepo" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-secondary" id="btnDeposit">
+                        <i class="fas fa-pencil"></i>
+                        Deposit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Withdraw -->
+    <div class="modal fade" id="mdWithdraw" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal Withdraw</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameWd" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameWd" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailWd" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailWd" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="phoneWd" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phoneWd" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressWd" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="addressWd" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="transactionAmountWd">Amount Withdraw</label>
+                                <input type="number" id="transactionAmountWd" class="form-control">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="amountWd">Balance</label>
+                                <input type="number" id="amountWd" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-secondary" id="btnWithdraw">
+                        <i class="fas fa-pencil"></i>
+                        Withdraw
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Transfer -->
+    <div class="modal fade" id="mdTransfer" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal Transfer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" autocomplete="off">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-3">
+                                <label for="senderID" class="form-label">Sender ID</label>
+                                <input type="number" class="form-control" id="senderIdTf" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="senderName" class="form-label">Sender Name</label>
+                                <input type="text" class="form-control" id="senderNameTf" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="email" class="form-label">Sender Email</label>
+                                <input type="email" class="form-control" id="emailTf" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="balance" class="form-label">Sender Balance</label>
+                                <input type="number" class="form-control" id="balanceTf" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-3">
+                                <label for="recipientSelect">Recipient</label>
+                                <select class="form-select" name="recipient.id" id="recipientSelect">
+                                    <option value="" selected disabled>Select recipient</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="transfer" class="form-label">Transfer Amount (VND)</label>
+                                <input type="number" class="form-control" id="transfer" name="transfer" value="0">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="fees" class="form-label">Fee (%)</label>
+                                <input type="number" class="form-control" id="fees" name="fees" value="10" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="total" class="form-label">Total Amount (VND)</label>
+                                <input type="number" class="form-control" id="total" value="0" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-secondary" id="btnTransfer">
+                        <i class="fas fa-pencil"></i>
+                        Transfer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let tbody = $('#tbCustomer tbody');
+        let select = $('#recipients select');
+        // const btnCreate = document.getElementById('btnCreate');
+        // const btnUpdate = document.getElementById('btnUpdate');
+
+        // const toastLive = document.getElementById('liveToast')
+        // const toastBody = document.getElementById('toast-body')
+        // const btnCloseToast = document.getElementById('btnCloseToast')
+
+        
+        const renderCustomer = (obj) => {
+            return `
+                <tr id="tr_${obj.id}">
+                    <td>${obj.id}</td>
+                    <td>${obj.fullName}</td>
+                    <td>${obj.email}</td>
+                    <td>${obj.phone}</td>
+                    <td>${obj.address}</td>
+                    <td>${obj.balance}</td>
+                    <td>
+                        
+                        <button class="btn btn-outline-light edit" data-id='${obj.id}'>
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-success deposit" data-id='${obj.id}'>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning withdraw" data-id='${obj.id}'>
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-info transfer" data-id='${obj.id}'>
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger delete" data-id='${obj.id}'>
+                            <i class="fas fa-ban"></i>
+                        </button>
+                    </td>
+                </tr>
+            `
+        }
+
+        function renderDeposit(obj) {
+            return `
+            <tr id='trDP_${obj.id}'>
+            <td>${obj.id}</td>
+            <td>${obj.customerId}</td>
+            <td>${obj.customerName}</td>
+            <td>${obj.transactionAmount}</td>
+        </tr>`
+                ;
+        }
+
+        function renderWithdraw(obj){
+            return `
+            <tr id='trDP_${obj.id}'>
+            <td>${obj.id}</td>
+            <td>${obj.customerId}</td>
+            <td>${obj.customerName}</td>
+            <td>${obj.transactionAmount}</td>
+        </tr>`
+                ;
+
+
+        }
+
+        function renderTransfer(obj) {
+            return `
+            <tr id='trDP_${obj.id}'>
+            <td>${obj.id}</td>
+            <td>${obj.senderId}</td>
+            <td>${obj.recipientId}</td>
+            <td>${obj.fees}</td>
+            <td>${obj.feesAmount}</td>
+            <td>${obj.transferAmount}</td>
+            <td>${obj.transactionAmount}</td>
+        </tr>`
+                ;
+        }
+
+        function getAllCustomers() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/persons'
+            })
+                .done((data) => {
+                    $.each(data, (index, item) => {
+                        let str = renderCustomer(item);
+                        tbody.append(str);
+                    })
+                    addEventCreate();
+                    addEventEdit();
+                    addEventDelete();
+                    addEventDeposit();
+                    addEventWithdraw();
+                    addEventTransfer();
+                })
+                .fail((error) => {
+                    console.error(error);
+                })
+        }
+        getAllCustomers();
+
+        function getAllDeposit() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/deposits'
+            })
+                .done((data) => {
+                    let str = '';
+                    $.each(data, (index, item) => {
+                        str += renderDeposit(item);
+                    })
+                    $('#tbHistoryDeposit tbody').empty(str)
+                    $('#tbHistoryDeposit tbody').append(str)
+                    $('#mdHistoryDeposit').modal('show');
+                })
+                .fail((error) => {
+                    console.error(error);
+                })
+        }
+
+        function getAllWithdraw() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/withdraws'
+            })
+                .done((data) => {
+                    let str = '';
+                    $.each(data, (index, item) => {
+                        str += renderWithdraw(item);
+                    })
+                    $('#tbHistoryWithdraw tbody').empty(str)
+                    $('#tbHistoryWithdraw tbody').append(str)
+                    $('#mdHistoryWithdraw').modal('show');
+                })
+                .fail((error) => {
+                    console.error(error);
+                })
+        }
+
+        function getAllTransfer() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/transfers'
+            })
+                .done((data) => {
+                    let str = '';
+                    $.each(data, (index, item) => {
+                        str += renderTransfer(item);
+                    })
+                    $('#tbHistoryTransfer tbody').empty(str)
+                    $('#tbHistoryTransfer tbody').append(str)
+                    $('#mdHistoryTransfer').modal('show');
+                })
+                .fail((error) => {
+                    console.error(error);
+                })
+        }
+
+        function getCustomerById(customerId) {
+            // return customers.find(item => item.id == customerId);
+            return $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3300/persons/' + customerId
+            })
+        }
+
+        function getRecipients(customerId) {
+            $.ajax({
+                url: 'http://localhost:3300/persons',
+                type: 'GET',
+                dataType: 'json',
+                success: function (customers) {
+                    var recipientSelect = $('#recipientSelect');
+                    recipientSelect.empty();
+                    recipientSelect.append($('<option>').val('').text('Select recipient'));
+
+                    $.each(customers, function (index, customer) {
+                        if (customer.id !== customerId && customer.deleted === false) {
+                            recipientSelect.append($('<option>').val(customer.id).text(customer.id + ' - ' + customer.fullName));
+                        }
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('Error: ' + textStatus + ' ' + errorThrown);
+                }
+            });
+
+        }
+
+        function addEventCreate() {
+            $('.create').on('click', function () {
+                $('#fullNameCr').val();
+                $('#emailCr').val();
+                $('#phoneCr').val();
+                $('#addressCr').val();
+                $('#mdCreate').modal('show');
+            });
+        }
+
+        function addEventEdit() {
+            $('.edit').on('click', function () {
+                customerId = $(this).data('id');
+                getCustomerById(customerId).then((data) => {
+                    console.log(data);
+
+                    if (data !== {}) {
+                        $('#fullNameUp').val(data.fullName);
+                        $('#emailUp').val(data.email);
+                        $('#phoneUp').val(data.phone);
+                        $('#addressUp').val(data.address);
+                        $('#mdUpdate').modal('show');
+                    }
+                    else {
+                        alert('Customer not found');
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+        }
+
+        function addEventDeposit() {
+            $('.deposit').on('click', function () {
+                customerId = $(this).data('id');
+                getCustomerById(customerId).then((data) => {
+                    console.log(data);
+
+                    if (data !== {}) {
+                        $('#fullNameDepo').val(data.fullName);
+                        $('#emailDepo').val(data.email);
+                        $('#phoneDepo').val(data.phone);
+                        $('#addressDepo').val(data.address);
+                        $('#amountDepo').val(data.balance);
+                        $('#mdDeposit').modal('show');
+                    }
+                    else {
+                        alert('Customer not found');
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+        }
+
+        function addEventWithdraw() {
+            $('.withdraw').on('click', function () {
+                customerId = $(this).data('id');
+                getCustomerById(customerId).then((data) => {
+                    console.log(data);
+
+                    if (data !== {}) {
+                        $('#fullNameWd').val(data.fullName);
+                        $('#emailWd').val(data.email);
+                        $('#phoneWd').val(data.phone);
+                        $('#addressWd').val(data.address);
+                        $('#amountWd').val(data.balance);
+                        $('#mdWithdraw').modal('show');
+                    }
+                    else {
+                        alert('Customer not found');
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+        }
+
+        function addEventTransfer() {
+            $('.transfer').on('click', function () {
+                customerId = $(this).data('id');
+                getCustomerById(customerId).then((data) => {
+                    console.log(data);
+
+                    if (data !== {}) {
+                        $('#senderIdTf').val(data.id);
+                        $('#senderNameTf').val(data.fullName);
+                        $('#emailTf').val(data.email);
+                        $('#balanceTf').val(data.balance);
+                        getRecipients(customerId);
+                        $('#mdTransfer').modal('show');
+                    }
+                    else {
+                        alert('Customer not found');
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+
+        }
+
+        function addEventDelete() {
+            $('.delete').on('click', function () {
+                customerId = $(this).data('id');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085D6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'DELETE',
+                            //tên API
+                            url: "http://localhost:3300/persons/" + customerId,
+                            //xử lý khi thành công
+                            data: {
+                                deleted: true
+                            }
+                        })
+                            .done(() => {
+                                $('#tr_' + customerId).remove();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Customer has been deleted',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            })
+                    }
+                })
+            })
+        }
+
+        $('#btnCreate').on('click', () => {
+            let fullName = $('#fullNameCr').val();
+            let email = $('#emailCr').val();
+            let phone = $('#phoneCr').val();
+            let address = $('#addressCr').val();
+            let balance = 0;
+            let deleted = false;
+            let customer = {
+                fullName,
+                email,
+                phone,
+                address,
+                balance,
+                deleted
+            };
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                //tên API
+                url: "http://localhost:3300/persons",
+                //xử lý khi thành công
+                data: JSON.stringify(customer)
+            })
+                .done((data) => {
+                    customer = data;
+                    $('#mdCreate').modal('hide');
+                    console.log(data)
+                    tbody.append(renderCustomer(customer))
+                    $('#fullNameCr').val('');
+                    $('#emailCr').val('');
+                    $('#phoneCr').val('');
+                    $('#addressCr').val('');
+                    addEventCreate();
+                    addEventEdit();
+                    addEventDelete();
+                    addEventDeposit();
+                    addEventWithdraw();
+                    addEventTransfer();
+                })
+
+            // //chặn sự kiện mặc định của thẻ
+            // event.preventDefault();
+        });
+
+        $('#btnUpdate').on('click', () => {
+            let fullName = $('#fullNameUp').val();
+            let email = $('#emailUp').val();
+            let phone = $('#phoneUp').val();
+            let address = $('#addressUp').val()
+            let customer = {
+                fullName,
+                email,
+                phone,
+                address
+            }
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "PATCH",
+                //tên API
+                url: "http://localhost:3300/persons/" + customerId,
+                //xử lý khi thành công
+                data: JSON.stringify(customer)
+            })
+                .done((data) => {
+                    customer = data;
+                    $('#mdUpdate').modal('hide');
+                    console.log(data)
+                    $('#tr_' + customerId).replaceWith(renderCustomer(customer));
+                    addEventEdit();
+                    addEventDelete();
+                })
+        });
+
+        $('#btnDeposit').on('click', () => {
+            getCustomerById(customerId).then((data) => {
+                let customer = data;
+                let currentBalance = customer.balance;
+                let transactionAmount = +$('#transactionAmountDepo').val();
+                let newBalance = currentBalance + transactionAmount;
+                customer.balance = newBalance;
+
+                let deposit = {
+                    customerId: customer.id,
+                    customerName: customer.fullName,
+                    transactionAmount: transactionAmount
+                }
+
+                $.ajax({
+                    type: 'PATCH',
+                    headers: {
+                        'accept': 'application/json',
+                        'content-type': 'application/json'
+                    },
+                    url: 'http://localhost:3300/persons/' + customer.id,
+                    data: JSON.stringify(customer)
+                })
+                    .done((data) => {
+                        let str = renderCustomer(data);
+                        $('#tr_' + customerId).replaceWith(str);
+                        
+                        $('#mdDeposit').modal('hide');
+                        $('#transactionAmountDepo').val('');
+                        addEventEdit();
+                        addEventDeposit();
+                        addEventDelete();
+                    }),
+                    $.ajax({
+                        type: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'content-type': 'application/json'
+                        },
+                        url: 'http://localhost:3300/deposits',
+                        data: JSON.stringify(deposit)
+                    })
+            })
+        });
+
+        $('#btnWithdraw').on('click', () => {
+            getCustomerById(customerId).then((data) => {
+                let customer = data;
+                let currentBalance = customer.balance;
+                let transactionAmount = +$('#transactionAmountWd').val();
+                let newBalance = currentBalance - transactionAmount;
+                customer.balance = newBalance;
+
+                let withdraw = {
+                    customerId: customer.id,
+                    customerName: customer.fullName,
+                    transactionAmount: transactionAmount
+                }
+
+                $.ajax({
+                    type: 'PATCH',
+                    headers: {
+                        'accept': 'application/json',
+                        'content-type': 'application/json'
+                    },
+                    url: 'http://localhost:3300/persons/' + customer.id,
+                    data: JSON.stringify(customer)
+                })
+                    .done((data) => {
+                        let str = renderCustomer(data);
+                        $('#tr_' + customerId).replaceWith(str);
+                        $('#transactionAmountWd').val('');
+                        $('#mdWithdraw').modal('hide');
+
+                        addEventEdit();
+                        addEventWithdraw();
+                        addEventDelete();
+        
+                    }),
+                    $.ajax({
+                        type: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'content-type': 'application/json'
+                        },
+                        url: 'http://localhost:3300/withdraws',
+                        data: JSON.stringify(withdraw)
+                    })
+
+            })
+        });
+
+        $('#btnTransfer').on('click', () => {
+            let recipientId = $('#recipientSelect').val();
+
+
+            getCustomerById(customerId).then((data) => {
+                let customer = data;
+                let currentBalance = customer.balance;
+                let transactionAmount = +$('#total').val();
+                let newBalance = currentBalance - transactionAmount;
+                customer.balance = newBalance;
+
+                getCustomerById(recipientId).then((data) => {
+                    let recipient = data;
+                    let transferAmount = +$('#transfer').val();
+                    let currentBalanceRecipient = recipient.balance;
+                    let newBalanceRecipient = currentBalanceRecipient + transferAmount;
+                    recipient.balance = newBalanceRecipient;
+
+                    let fees = +$('#fees').val();
+                    let feesAmount = (fees * transferAmount) / 100;
+
+
+                    let transfer = {
+                        senderId: customer.id,
+                        recipientId: recipient.id,
+                        fees: fees,
+                        feesAmount: feesAmount,
+                        transferAmount: transferAmount,
+                        transactionAmount: transactionAmount
+                    }
+
+                    $.ajax({
+                        type: 'PATCH',
+                        headers: {
+                            'accept': 'application/json',
+                            'content-type': 'application/json'
+                        },
+                        url: 'http://localhost:3300/persons/' + recipient.id,
+                        data: JSON.stringify(recipient)
+                    }).done((data) => {
+                        let str = renderCustomer(data);
+                        $('#tr_' + recipient.id).replaceWith(str);
+                    }),
+                        $.ajax({
+                            type: 'POST',
+                            headers: {
+                                'accept': 'application/json',
+                                'content-type': 'application/json'
+                            },
+                            url: 'http://localhost:3300/transfers',
+                            data: JSON.stringify(transfer)
+                        })
+                })
+
+                $.ajax({
+                    type: 'PATCH',
+                    headers: {
+                        'accept': 'application/json',
+                        'content-type': 'application/json'
+                    },
+                    url: 'http://localhost:3300/persons/' + customer.id,
+                    data: JSON.stringify(customer)
+                }).done((data) => {
+                    let str = renderCustomer(data);
+                    $('#tr_' + customerId).replaceWith(str);
+
+                    $('#transfer').val('');
+                    $('#total').val('');
+                    $('#mdTransfer').modal('hide');
+
+                    addEventEdit();
+                    addEventTransfer();
+                    addEventDelete();
+                   
+                })
+            })
+        });
+
+        document.addEventListener("input", () => {
+            let fee = Number(document.getElementById("fees").value);
+            let transferAmount = Number(document.getElementById("transfer").value);
+            let transactionFee = transferAmount * fee / 100;
+            document.getElementById("total").value = Math.round(transactionFee + transferAmount);
+        })
+
+        // async function fetchALlPerson() {
+        //     const response = await fetch("http://localhost:3300/persons");
+        //     const persons = await response.json();
+        //     return persons
+        // }
+
+
+        //     const persons = await fetchALlPerson();
+        //     console.log(persons);
+
+        //     persons.forEach(item => {
+        //         const str = renderPerson(item)
+        //         bodyCustomer.innerHTML += str;
+        //     });
+
+        //     const btnEditElems = document.querySelectorAll('.edit')
+
+        //     btnEditElems.forEach(item => {
+        //         item.addEventListener('click', async () => {
+        //             // const id = item.id.replace('data_', '')
+        //             personId = item.getAttribute('data-id')
+
+        //             const person = await getPersonById(personId);
+        //             // console.log(person);
+
+        //             openModal('modalUpdate')
+
+        //             document.getElementById('fullNameUp').value = person.fullName
+        //             document.getElementById('emailUp').value = person.email
+        //             document.getElementById('phoneUp').value = person.phone
+        //             document.getElementById('addressUp').value = person.address
+
+        //         })
+        //     })
+        // }
+
+        // const getPersonById = async (personId) => {
+        //     const response = await fetch("http://localhost:3300/persons/" + personId);
+        //     const person = await response.json();
+        //     return person
+        // }
+
+        // const fetchUpdatePerson = async (personId, obj) => {
+        //     const response = await fetch("http://localhost:3300/persons/" + personId, {
+        //         method: 'PATCH',
+        //         headers: {
+        //             "Content-type": "application/json; charset=UTF-8"
+        //         },
+        //         body: JSON.stringify(obj)
+        //     });
+        //     const person = await response.json();
+        //     return person
+        // }
+
+        
+
+        // btnCreate.addEventListener('click', async () => {
+        //     const fullName = document.getElementById('fullNameCre').value
+        //     const email = document.getElementById('emailCre').value
+        //     const phone = document.getElementById('phoneCre').value
+        //     const address = document.getElementById('addressCre').value
+        //     const balance = 0
+        //     const deleted = 0
+
+        //     const obj = {
+        //         fullName,
+        //         email,
+        //         phone,
+        //         address,
+        //         balance,
+        //         deleted
+        //     }
+
+        //     const rawResponse = await fetch("http://localhost:3300/persons", {
+        //         method: 'POST',
+        //         headers: {
+        //             "Content-type": "application/json; charset=UTF-8"
+        //         },
+        //         body: JSON.stringify(obj)
+        //     });
+
+        //     const content = await rawResponse.json();
+
+        //     const str = renderPerson(content)
+        //     bodyCustomer.innerHTML += str;
+
+        //     closeModal('modalCreate')
+
+        // })
+
+        // btnUpdate.addEventListener('click', async () => {
+        //     const fullName = document.getElementById('fullNameUp').value
+        //     const email = document.getElementById('emailUp').value
+        //     const phone = document.getElementById('phoneUp').value
+        //     const address = document.getElementById('addressUp').value
+
+        //     const obj = {
+        //         fullName,
+        //         email,
+        //         phone,
+        //         address
+        //     }
+
+        //     const content = await fetchUpdatePerson(personId, obj)
+
+        //     const updateRow = document.getElementById('tr_' + personId)
+        //     const str = renderPerson(content)
+        //     updateRow.innerHTML = str
+
+        //     closeModal('modalUpdate')
+
+        //     toastBody.innerText = 'Cập nhật thông tin thành công'
+        //     toastBootstrap.show()
+
+        //     setTimeout(() => {
+        //         btnCloseToast.click()
+        //     }, 2500);
+        // })
+
+        // function openModal(elem) {
+        //     let el = document.getElementById(elem);
+        //     new bootstrap.Modal(el).show();
+        // }
+
+        // function closeModal(elem) {
+        //     document.getElementById(elem).style.display = "none"
+        //     document.getElementById(elem).classList.remove("show")
+        //     document.querySelector('.modal-backdrop').remove();
+        //     document.querySelector('body').setAttribute('style', 'overflow: none')
+        // }
+
+
+        // getALlPerson()
+    </script>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/lib/chart/chart.min.js"></script>
+    <script src="/assets/lib/easing/easing.min.js"></script>
+    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

@@ -9,9 +9,11 @@ import java.lang.reflect.WildcardType;
 import java.util.List;
 
 public interface ICustomerService extends IGeneralService<Customer,Long> {
-    void deposit(Deposit deposit);
+    List<Customer> findCustomersByDeleted(boolean deleted);
 
-    List<Customer> findAllWithoutId(Long id);
+    List<Customer> findAllWithoutId(Long id, boolean deleted);
+
+    void deposit(Deposit deposit);
 
     void withdraw(Withdraw withdraw);
 

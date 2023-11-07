@@ -35,7 +35,7 @@
           <div class="card-body">
             <div class="table-responsive">
               <div class="p-4">
-                <form th:action="@{/customers/update/{customerId}(customerId=${customer.id})}" th:object="${customer}" method="post">
+                <form th:action="@{/customers/edit/{customerId}(customerId=${customer.id})}" th:object="${customer}" method="post">
                   <div class="row mb-3 mt-3">
                     <div class="col-lg-6">
                       <label for="fullName" class="form-label">Full Name</label>

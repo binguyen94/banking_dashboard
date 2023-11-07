@@ -1,18 +1,23 @@
 package com.example.banking_manage.service.deposit;
 
 import com.example.banking_manage.model.Deposit;
+import com.example.banking_manage.repository.IDepositRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
-public class DepositServiceImpl implements IDepositService{
-    private final static List<Deposit> deposits = new ArrayList<>();
-
-    private static Long id;
+import java.util.Optional;
+@Service
+@Transactional
+public class DepositServiceImpl implements IDepositService {
+    @Autowired
+    private IDepositRepository depositRepository;
 
     @Override
     public List<Deposit> findAll() {
-        return null;
+        return depositRepository.findAll();
     }
 
     @Override
@@ -22,9 +27,7 @@ public class DepositServiceImpl implements IDepositService{
 
     @Override
     public void create(Deposit deposit) {
-        deposit.setId(id++);
-        deposit.setDeleted(false);
-        deposits.add(deposit);
+        depositRepository.save(deposit);
     }
 
     @Override

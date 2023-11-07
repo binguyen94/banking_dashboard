@@ -5,12 +5,17 @@ import com.example.banking_manage.model.Deposit;
 import com.example.banking_manage.model.Transfer;
 import com.example.banking_manage.model.Withdraw;
 import com.example.banking_manage.repository.ICustomerRepository;
+import com.example.banking_manage.repository.IDepositRepository;
+import com.example.banking_manage.repository.ITransferRepository;
+import com.example.banking_manage.repository.IWithdrawRepository;
 import com.example.banking_manage.service.transfer.TransferServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,10 +24,19 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-@AllArgsConstructor
 public class CustomerServiceImpl implements ICustomerService {
 
-    private final ICustomerRepository iCustomerRepository;
+    @Autowired
+    private ICustomerRepository customerRepository;
+
+    @Autowired
+    private IDepositRepository depositRepository;
+
+    @Autowired
+    private IWithdrawRepository withdrawRepository;
+
+    @Autowired
+    private ITransferRepository transferRepository;
 //    private static final List<Customer> customers = new ArrayList<>();
 //    private static long id = 1L;
 //
@@ -31,118 +45,126 @@ public class CustomerServiceImpl implements ICustomerService {
 //
 //    }
 
-//    public CustomerServiceImpl() {
+    //    public CustomerServiceImpl() {
 //    }
+    @Override
+    public List<Customer> findCustomersByDeleted(boolean deleted) {
+        return customerRepository.findCustomersByDeleted(deleted);
+    }
 
     @Override
     public List<Customer> findAll() {
-        return iCustomerRepository.findAll();
+        return customerRepository.findAll();
     }
 
     @Override
     public Customer findById(Long id) {
-        return iCustomerRepository.findById(id).get();
+        return customerRepository.findById(id).get();
     }
+
 
     //    @Override
 //    public List<Customer> findAllWithoutId(Long id) {
 //        return customers.stream().filter(customer -> !Objects.equals(customer.getId(), id)).collect(Collectors.toList());
 //    }
     @Override
-    public List<Customer> findAllWithoutId(Long id) {
-        return iCustomerRepository.findAll().stream().filter(customer -> !customer.getId().equals(id)).collect(Collectors.toList());
+    public List<Customer> findAllWithoutId(Long id, boolean deleted) {
+        List<Customer> allCustomers = customerRepository.findCustomersByDeleted(deleted);
+        List<Customer> customers = allCustomers.stream()
+                .filter(customer -> !customer.getId().equals(id))
+                .collect(Collectors.toList());
+        return customers;
     }
+
 
 
     @Override
     public void create(Customer customer) {
-        customer.setBalance(BigDecimal.ZERO);
-        customer.setDeleted(false);
-
-        iCustomerRepository.save(customer);
+        customerRepository.save(customer);
     }
 
     @Override
-    public void update(Long customerId, Customer updatedCustomer) {
-        Optional<Customer> optionalCustomer = iCustomerRepository.findById(customerId);
-
-        if (optionalCustomer.isPresent()) {
-            Customer customer = optionalCustomer.get();
-
-            customer.setFullName(updatedCustomer.getFullName());
-            customer.setEmail(updatedCustomer.getEmail());
-            customer.setPhone(updatedCustomer.getPhone());
-            customer.setAddress(updatedCustomer.getAddress());
-
-            iCustomerRepository.save(customer);
-        } else {
-            throw new IllegalArgumentException("Không tìm thấy khách hàng với id " + customerId);
-        }
-    }
-
-
-    @Override
-    public void deposit(Deposit deposit) {
-        Customer customer = deposit.getCustomerDeposit();
-        BigDecimal transactionAmount = deposit.getTransactionAmount();
-
-        Optional<Customer> optionalCustomer = iCustomerRepository.findById(customer.getId());
-
-        if (optionalCustomer.isPresent()) {
-            Customer managedCustomer = optionalCustomer.get();
-
-            managedCustomer.setBalance(managedCustomer.getBalance().add(transactionAmount));
-
-            iCustomerRepository.save(managedCustomer);
-        } else {
-            throw new IllegalArgumentException("Không tìm thấy khách hàng với id " + customer.getId());
-        }
-    }
-
-
-    @Override
-    public void withdraw(Withdraw withdraw) {
-        Customer customer = withdraw.getCustomerWithdraws();
-        BigDecimal transactionAmount = withdraw.getTransactionAmount();
-
-        Optional<Customer> optionalCustomer = iCustomerRepository.findById(customer.getId());
-
-        if (optionalCustomer.isPresent()) {
-            Customer managedCustomer = optionalCustomer.get();
-
-            // Check if the customer has enough money to withdraw the requested amount.
-            if (managedCustomer.getBalance().compareTo(transactionAmount) < 0) {
-                throw new IllegalArgumentException("Don't have enough money to withdraw this amount..");
-            }
-
-            // Update the customer's balance.
-            managedCustomer.setBalance(managedCustomer.getBalance().subtract(transactionAmount));
-
-            // Save the customer object to the database.
-            iCustomerRepository.save(managedCustomer);
-        } else {
-            throw new IllegalArgumentException("Không tìm thấy khách hàng với id " + customer.getId());
-        }
-    }
-
-
-    @Override
-    public void transfer(Transfer transfer) {
-
-
+    public void update(Long id, Customer customer) {
+        customer.setId(id);
+        customerRepository.save(customer);
     }
 
 
     @Override
     public void removeById(Long id) {
-        Optional<Customer> optionalCustomer = iCustomerRepository.findById(id);
-
-        if (optionalCustomer.isPresent()) {
-            iCustomerRepository.deleteById(id);
-        } else {
-            throw new IllegalArgumentException("Không tìm thấy khách hàng với id " + id);
-        }
+        Optional<Customer> existingCustomer = Optional.ofNullable(findById(id));
+        Customer customer = existingCustomer.get();
+        customer.setDeleted(true);
+        customerRepository.save(customer);
     }
+
+
+    @Override
+    public void deposit(Deposit deposit) {
+        deposit.setCreateAt(LocalDateTime.now());
+
+
+
+//        Customer customer = deposit.getCustomer();
+//        BigDecimal currentBalance = customer.getBalance();
+//        BigDecimal transactionAmount = deposit.getTransactionAmount();
+//        BigDecimal newBalance = currentBalance.add(transactionAmount);
+//        customer.setBalance(newBalance);
+//        customerRepository.save(customer);
+
+        depositRepository.incrementBalance(deposit.getCustomerDeposit().getId(), deposit.getTransactionAmount());
+        depositRepository.save(deposit);
+    }
+
+
+    @Override
+    public void withdraw(Withdraw withdraw) {
+        withdraw.setCreateAt(LocalDateTime.now());
+
+
+//        Customer customer = withdraw.getCustomerWithdraws();
+//        BigDecimal currentBalance = customer.getBalance();
+//        BigDecimal transactionAmount = withdraw.getTransactionAmount();
+//        BigDecimal newBalance = currentBalance.subtract(transactionAmount);
+//        customer.setBalance(newBalance);
+//
+//        customerRepository.save(customer);
+
+        withdrawRepository.decrementBalance(withdraw.getCustomerWithdraws().getId(), withdraw.getTransactionAmount());
+        withdrawRepository.save(withdraw);
+    }
+
+
+    @Override
+    public void transfer(Transfer transfer) {
+        BigDecimal senderBalance = transfer.getSender().getBalance();
+        BigDecimal transferAmount = transfer.getTransferAmount();
+
+        transfer.setFeesAmount(transfer.getTransactionAmount().subtract(transfer.getTransferAmount()));
+        BigDecimal feesAmount = transfer.getFeesAmount();
+
+        Customer sender = transfer.getSender();
+        Customer recipient = transfer.getRecipient();
+
+        BigDecimal newSenderBalance = senderBalance.subtract(transferAmount).subtract(feesAmount);
+        sender.setBalance(newSenderBalance);
+
+        BigDecimal newRecipientBalance = transfer.getRecipient().getBalance().add(transferAmount);
+        recipient.setBalance(newRecipientBalance);
+
+        transfer.setFeesAmount(feesAmount);
+        transfer.setTransactionAmount(transferAmount);
+
+        customerRepository.save(sender);
+        customerRepository.save(recipient);
+
+        transfer.setCreateAt(LocalDateTime.now());
+
+        transferRepository.save(transfer);
+    }
+
+
+
 
 }
 

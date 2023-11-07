@@ -1,18 +1,23 @@
 package com.example.banking_manage.service.withdraw;
 
 import com.example.banking_manage.model.Withdraw;
+import com.example.banking_manage.repository.IWithdrawRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
+@Service
+@Transactional
 public class WithdrawServiceImpl implements IWithdrawService{
-    private final static List<Withdraw> withdraws = new ArrayList<>();
-
-    private static Long id;
+    @Autowired
+    private IWithdrawRepository withdrawRepository;
 
     @Override
     public List<Withdraw> findAll() {
-        return null;
+        return withdrawRepository.findAll();
     }
 
     @Override
@@ -22,9 +27,7 @@ public class WithdrawServiceImpl implements IWithdrawService{
 
     @Override
     public void create(Withdraw withdraw) {
-        withdraw.setId(id++);
-        withdraw.setDeleted(false);
-        withdraws.add(withdraw);
+
     }
 
     @Override
