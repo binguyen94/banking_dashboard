@@ -84,6 +84,7 @@
                         <th>FullName</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Address</th>
                         <!-- <th>Province</th>
                         <th>District</th>
                         <th>Ward</th>
@@ -152,12 +153,12 @@
                                     onblur="validatePhone(event)">
                                 <div id="phoneErrorContainer" class="text-danger"></div>
                             </div>
-                            <!-- <div class="col-lg-6">
+                            <div class="col-lg-6">
                                 <label for="addressCre">Address</label>
                                 <input type="text" id="addressCre" class="form-control" onchange="clearError(event)"
                                     onblur="validateAddress(event)">
                                 <div id="addressErrorContainer" class="text-danger"></div>
-                            </div> -->
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -215,6 +216,12 @@
                                 <input type="tel" id="phoneUp" class="form-control" onchange="clearError(event)"
                                     onblur="validatePhone(event)">
                                 <div id="phoneError" class="text-danger"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressUp">Address</label>
+                                <input type="text" id="addressUp" class="form-control"  onchange="clearError(event)"
+                                    onblur="validateAddress(event)">
+                                <div id="addressError" class="text-danger"></div>
                             </div>
                             <!-- <div class="col-lg-6">
                                 <label for="addressUp">Address</label>

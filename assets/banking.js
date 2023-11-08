@@ -57,6 +57,8 @@ const renderCustomer = (item) => {
                     <td>${item.fullName}</td>
                     <td>${item.email}</td>
                     <td>${item.phone}</td>
+                    <td>${item.address}</td>
+
                     <td id="balance-${item.id}">${item.balance}</td>
                     <td>
                         <button class="btn btn-outline-primary edit" data-id="${item.id}" data-bs-toggle="modal" data-bs-target="#modalUpdate">
@@ -162,6 +164,7 @@ const getAllCustomers = () => {
                             $('#fullNameUp').val(customer.fullName);
                             $('#emailUp').val(customer.email);
                             $('#phoneUp').val(customer.phone);
+                            $('#addressUp').val(customer.address);
 
 ;
 
@@ -228,6 +231,7 @@ btnCreate.on('click', () => {
         fullName: $('#fullNameCre').val(),
         email: $('#emailCre').val(),
         phone: $('#phoneCre').val(),
+        address: $('#addressCre').val(),
     
         balance: 0,
         deleted: 0
@@ -318,6 +322,7 @@ btnUpdate.on('click', () => {
         fullName: $('#fullNameUp').val(),
         email: $('#emailUp').val(),
         phone: $('#phoneUp').val(),
+        address: $('#addressUp').val(),
 
     }
 
@@ -768,7 +773,7 @@ function getDataInput() {
             classContainer: "col-12 mt-3",
             name: 'phone',
             value: bankingSelected.phone,
-            pattern: /^\+\d\s\(\d{3}\)\s\d{3}-\d{4}$/,
+            // pattern: /^\+\d\s\(\d{3}\)\s\d{3}-\d{4}$/,
             message: "Phone is between +X (XXX) XXX-XXXX",
             required: true
         },
@@ -779,6 +784,14 @@ function getDataInput() {
             value: bankingSelected.email,
             pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
             message: "Please enter a valid email address",
+            required: true
+        },
+        {
+            label: 'Address',
+            classContainer: "col-12 mt-3",
+            name: 'address',
+            value: bankingSelected.address,
+            message: "Please enter a valid address address",
             required: true
         }
     ];
